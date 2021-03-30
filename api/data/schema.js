@@ -1,11 +1,11 @@
 const { buildASTSchema } = require('graphql');
 const gql = require('graphql-tag');
 
-const schema = buildASTSchema(gql`
+module.exports ={ 
+    schema : buildASTSchema(gql`
     type Query {
         travels: [Travel]
-        travel(id: ID!): Travel
-        origin : Travel
+        travelByOrigin(origin: string!): [Travel]
     },
     type Travel {
         id: ID
@@ -15,6 +15,6 @@ const schema = buildASTSchema(gql`
         price: Float
         data: String
     }
-`);
-
+`)
+}
 

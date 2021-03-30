@@ -3,7 +3,7 @@ import Navbar from '../Navbar/Navbar';
 import style from './Home.module.css';
 import Carrusel from '../Carousel/Carousel.js';
 import { useQuery, gql } from '@apollo/client';
-import { GET_TRAVELS, GET_ORIGIN } from "../../GraphQL/Queries";
+import { GET_ORIGIN } from "../../GraphQL/Queries";
 
 const Home = () =>{
     const { error, loading, data } = useQuery(GET_ORIGIN);

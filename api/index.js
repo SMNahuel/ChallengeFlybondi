@@ -1,15 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const graphqlHTTP = require('express-graphql');
-const travel = require('./dataset.json')
 const {schema} = require('./data/schema.js');
-
-const mapPost = (post, id) => post && ({ id, ...post });
-
-const root = {
-  travels: () => travel.map(mapPost),
-  travel: ({ id }) => mapPost(travel[id], id),
-};
+const {root }= require('./data/resolvers.js')
 
 const app = express();
 app.use(cors());
