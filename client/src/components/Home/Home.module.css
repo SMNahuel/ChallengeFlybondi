@@ -1,0 +1,108 @@
+@import url('https://rsms.me/inter/inter.css');
+*{
+    font-family: 'Inter', sans-serif;
+}
+
+/* Contenedor principla */
+.container{
+    display:flex;
+    justify-content: center;
+}
+/* ----------------------- */
+
+/* Container derecho */
+.discountContainer{
+    margin-left: 50px;
+    width: 25%;
+    border: black 5px solid;
+}
+/* ----------------------- */
+
+/* Container izquierdo */
+.searchContainer{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 40vh;
+    border: black 5px solid;
+}
+button {
+    color: currentColor;
+    padding: .5rem calc(.5rem * 2);
+    background: white;
+    border: solid 3px  black;
+    border-radius: 800px;
+    font-weight: 900;
+
+}
+
+
+
+.container_inputs{
+    max-width: 500px;
+    margin: 0 auto;   
+    position: relative; 
+    background-color: transparent;
+    z-index: 0;
+}
+.container_inputs input, 
+.container_inputs select{
+    width: 100%;
+    padding: 7px 10px;
+    margin-bottom: 30px;
+    border-radius: 0px;
+    outline: none;
+    resize: none;
+    border-bottom: 1px solid #282C34;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: #282C34;
+    
+}
+.container_inputs input::placeholder{
+    color: #282C34;
+
+}
+.container_inputs input:focus::placeholder{
+    color: transparent;
+}
+.container_inputs select::placeholder{
+    color: #282C34;
+}
+.container_inputs select:focus::placeholder{
+    color: transparent;
+}
+
+.container_inputs label{
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: 10px;
+    color: transparent;
+    transition: all .5s linear;
+    font-size: 13px;
+    pointer-events: none;
+}
+.container_inputs input:focus ~ label,
+.container_inputs input:valid ~ label {
+    top: -23px;
+    color: #3f51b5;
+}
+.container_inputs input:focus,
+.container_inputs input:valid {
+    border-bottom: 1px solid #3f51b5
+}
+.container_inputs select:focus ~ label,
+.container_inputs select:valid ~ label {
+    top: -30px;
+    color: #3f51b5;
+}
+.container_inputs select:focus,
+.container_inputs select:valid {
+    border-bottom: 1px solid #3f51b5
+}
+/* ----------------------- */
