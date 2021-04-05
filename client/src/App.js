@@ -9,7 +9,7 @@ import {
   HttpLink,
   from,
 } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+import React from 'react';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -28,11 +28,13 @@ const client = new ApolloClient({
 });
 function App() {
   return (
+    <React.StrictMode>
     <ApolloProvider client={client}>
       {" "}
       {/* <GetUsers /> */}
       <Home />
     </ApolloProvider>
+    </React.StrictMode>
   );
 }
 

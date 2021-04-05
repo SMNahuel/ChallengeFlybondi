@@ -13,10 +13,14 @@ query {
   }
 `;
 
-export const GET_ORIGIN = gql`
-query {
-  travels {
-    destination
-  } 
+export const SEARCH_ORIGIN = gql`
+query{
+    searchOrigin 
   }
+`;
+
+export const SEARCH_DESTINATION= gql`
+    {  
+      searchDestination(origin: $origin, date: $date)
+    }
 `;

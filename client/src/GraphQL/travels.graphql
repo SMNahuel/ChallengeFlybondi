@@ -1,0 +1,10 @@
+query {
+    travels {
+      id
+      destination
+      origin
+      availability
+      data
+      price
+    } 
+}
