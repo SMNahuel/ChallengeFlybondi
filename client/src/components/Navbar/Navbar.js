@@ -4,9 +4,7 @@ import style from './Navbar.module.css';
 const Navbar = ({title}) => {
     return(
         <div className={style.container}>
-            <p>
-                {title}
-            </p>
+            <h1> Vuela desde</h1>
         </div>
     )
 }

@@ -6,8 +6,7 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  HttpLink,
-  from,
+  HttpLink
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
 import React from 'react';

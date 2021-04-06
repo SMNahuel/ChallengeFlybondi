@@ -21,8 +21,8 @@ query{
 
 export const SEARCH_TRAVEL= gql`
   query 
-    searchTravel($origen: String!, $date: String!, $price: Float!){  
-      searchTravel(origen: $origen, date: $date, price: $price){
+    searchTravel($origin: String!, $date: String!, $price: Float!){  
+      searchTravel(origin: $origin, date: $date, price: $price){
         origin
         availability
         destination
@@ -30,5 +30,4 @@ export const SEARCH_TRAVEL= gql`
         data
       }
     }
-  
 `;

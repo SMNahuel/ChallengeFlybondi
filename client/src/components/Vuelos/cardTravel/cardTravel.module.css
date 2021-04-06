@@ -1,0 +1,32 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.cardTravel{
+    border: 2px solid black;
+    display: table;
+    margin: 10px 10px;
+    border-radius: 5px;
+    width: 400px;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    text-align: center;
+}
+.cardTravelRow{
+    margin: 10px 10px;
+    display: table-row;
+    width: 400px;
+}
+.cardTravelCell{
+    
+    display: table-cell;
+    width: 500px;
+}
+p{
+    margin: 10px 15px;
+}
