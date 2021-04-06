@@ -23,9 +23,13 @@
     width: 400px;
 }
 .cardTravelCell{
-    
     display: table-cell;
     width: 500px;
+}
+.cardTravelButto{
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 p{
     margin: 10px 15px;

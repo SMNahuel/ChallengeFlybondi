@@ -5,7 +5,7 @@ import CardTravel from './cardTravel/cardTravel';
 
 const Vuelos = (props) => {
     const [state, setState] = useState('')
-    const { error, loading, data } = useQuery(SEARCH_TRAVEL,{
+    const { error, data } = useQuery(SEARCH_TRAVEL,{
         variables : {
             origin: props.origen, 
             date: '2021-01-01', 
@@ -16,14 +16,14 @@ const Vuelos = (props) => {
     useEffect(()=>{
         if(data){
             let result = [...data.searchTravel]
-            result. sort(function(a, b){
+            result.sort(function(a, b){
                 if(a.price > b.price){
                     return 1
                 }
                 if(a.price < b.price){
                     return -1
                 }
-
+                return 0
             })
             console.log(result)
             setState(result)
@@ -31,9 +31,7 @@ const Vuelos = (props) => {
         if(error){
             setState("Upps")
         }
-        if(loading){
-            <p>Cargando ...</p>
-        }
+
     }, [data, error])
 
     return(

@@ -23,7 +23,9 @@ const CardTravel = ({travel}) => {
                             <div className={s.cardTravelCell}>{travel.data}</div>
                             <div className={s.cardTravelCell}>{travel.availability}</div>
                             <div className={s.cardTravelCell}>${travel.price}</div>
+                            
                         </div> 
+                        <input className={s.cardTravelButton} type="button" placeholder="Reservar"/>
                     </div>
                 ))
             }

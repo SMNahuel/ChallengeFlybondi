@@ -8,16 +8,17 @@ import {
   ApolloProvider,
   HttpLink
 } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+/* import { onError } from "@apollo/client/link/error";
+ */
 import React from 'react';
 
-const errorLink = onError(({ graphqlErrors, networkError }) => {
+/* const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
     graphqlErrors.map(({ message, location, path }) => {
       alert(`Graphql error ${message}`);
     });
   }
-});
+}); */
 const httpLink ={
   uri: "http://localhost:4000/graphql"
 }
