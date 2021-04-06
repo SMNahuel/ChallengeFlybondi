@@ -9,6 +9,7 @@ import {
   HttpLink,
   from,
 } from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
 import React from 'react';
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -18,22 +19,25 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
     });
   }
 });
-const link = from([
+const httpLink ={
+  uri: "http://localhost:4000/graphql"
+}
+/* const link = from([
   errorLink,
   new HttpLink({ uri: "http://localhost:4000/graphql" }),
 ]);
+ */
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: link,
+  link: new HttpLink(httpLink)
 });
+
 function App() {
   return (
     <React.StrictMode>
-    <ApolloProvider client={client}>
-      {" "}
-      {/* <GetUsers /> */}
-      <Home />
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <Home />
+      </ApolloProvider>
     </React.StrictMode>
   );
 }

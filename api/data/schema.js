@@ -3,10 +3,6 @@ const gql = require('graphql-tag');
 
 module.exports ={ 
     schema : buildASTSchema(gql`
-    type Query {
-        travels: [Travel]
-        travelByOrigin(origin: string!): [Travel]
-    },
     type Travel {
         id: ID
         destination: String
@@ -15,6 +11,10 @@ module.exports ={
         price: Float
         data: String
     }
+    type Query {
+        searchTravel(origen: String!, date: String!, price: Float!): [Travel]
+        searchOrigin: [String]
+    },
 `)
 }
 

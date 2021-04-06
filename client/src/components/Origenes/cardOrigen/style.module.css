@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+img{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    box-shadow: 5px 5px 5px 5px black;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+img:hover{
+    width: 600px;
+    height: 600px;
+}
+.cardOrigen{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+.cardOrigen:hover{
+    font-size: 80px;
+}
+.text{
+    transition: all .5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
