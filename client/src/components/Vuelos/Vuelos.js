@@ -8,7 +8,7 @@ const Vuelos = (props) => {
     const { error, data } = useQuery(SEARCH_TRAVEL,{
         variables : {
             origin: props.origen, 
-            date: '2021-01-01', 
+            date: props.date, 
             price: 200
         }
     });
@@ -25,7 +25,6 @@ const Vuelos = (props) => {
                 }
                 return 0
             })
-            console.log(result)
             setState(result)
         }
         if(error){
@@ -37,9 +36,13 @@ const Vuelos = (props) => {
     return(
         <div>
             {
-                state && <CardTravel travel={state.slice(0, 10)}/>
+                state && <CardTravel 
+                    travel={state.slice(0, 5)} 
+                    showTravels={props.showTravels}
+                    origin={props.origen}
+                />
             }
-            
+
         </div>
     )
 }

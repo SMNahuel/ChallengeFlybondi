@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './cardTravel.module.css';
 
-const CardTravel = ({travel}) => {
+const CardTravel = ({travel, showTravels, origin}) => {
+
     return(
         <div className={s.contenedor}>
             <div className={s.cardTravelRow}>
@@ -11,8 +12,8 @@ const CardTravel = ({travel}) => {
                 <div className={s.cardTravelCell}>Precio</div>
             </div>
             {
-                travel && travel.map(travel => (
-                    <div className={s.cardTravel}>
+                travel && travel.map((travel, index)=> (
+                    <div className={s.cardTravel} key={index}>
                         <div className={s.cardTravelRow}>
                             <div className={s.cardTravelCell}>
                                 {travel.destination === 'BRC' && 'Bariloche'}
@@ -23,12 +24,13 @@ const CardTravel = ({travel}) => {
                             <div className={s.cardTravelCell}>{travel.data}</div>
                             <div className={s.cardTravelCell}>{travel.availability}</div>
                             <div className={s.cardTravelCell}>${travel.price}</div>
-                            
+                            <button className={s.cardTravelButton}>Reservar</button>
                         </div> 
-                        <input className={s.cardTravelButton} type="button" placeholder="Reservar"/>
                     </div>
                 ))
             }
+            <button className={s.cardTravelButton} onClick={() => showTravels(origin)}>Ver todos</button>
+
         </div>
     )
 }

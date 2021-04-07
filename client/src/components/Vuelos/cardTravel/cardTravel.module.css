@@ -3,11 +3,12 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border: 2px solid black;
+    border: 5px solid #2f5d62;
     border-radius: 5px;
+    font-weight: bold;
 }
 .cardTravel{
-    border: 2px solid black;
+    border: 3px solid #2f5d62;
     display: table;
     margin: 10px 10px;
     border-radius: 5px;
@@ -26,11 +27,25 @@
     display: table-cell;
     width: 500px;
 }
-.cardTravelButto{
-    display: flex;
+.cardTravelButton{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    border: none;
+    font-size: 20px;
+    width: 50%;
+    background: #ffb037;
     align-items: center;
     text-align: center;
+    font-weight: bold;
 }
+.cardTravelButton:hover{
+    background: #ffe268;
+    width: 100%;
+}
+
 p{
     margin: 10px 15px;
 }
