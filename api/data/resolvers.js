@@ -2,7 +2,6 @@ const travels = require('../dataset.json')
 
 module.exports = {
     root : {
-        /* Retornamos todos los viajes sin discriminar por fecha */
         travels: () => {return travels},
 
         /* Buscamos todos los viajes discrimando por origin, fecha y precio */
@@ -11,7 +10,7 @@ module.exports = {
             for(var i = 0; i< travels.length; i++){
                 if(travels[i].price <= data.price){
                     if(travels[i].data >= data.date){
-                        if(travels[i].origin === data.origen){
+                        if(travels[i].origin === data.origin){
                             travelsOrigin.push(travels[i])
                         }
                     }
@@ -19,7 +18,7 @@ module.exports = {
             }
             return travelsOrigin;
         },
-        /* Buscamos los origines disponibles */
+        /* search origins avality */
         searchOrigin: () => {
             const origin = []
             for(var i = 0; i< travels.length; i++){
