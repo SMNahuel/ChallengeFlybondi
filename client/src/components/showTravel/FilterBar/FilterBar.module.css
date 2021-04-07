@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    border: 5px solid #2f5d62;
+    margin: 10px;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100px;
+}
+
+.container input{
+    width: 15px;
+    height: 15px;
+}

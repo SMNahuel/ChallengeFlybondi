@@ -50,7 +50,7 @@ const Origenes = () => {
             </div>
            } 
             {
-                showAll && <ShowTravel origin={origin}/>
+                showAll && <ShowTravel origin={origin} date={date}/>
             }
         </div>
     )

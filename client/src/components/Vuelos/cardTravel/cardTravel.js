@@ -29,7 +29,9 @@ const CardTravel = ({travel, showTravels, origin}) => {
                     </div>
                 ))
             }
-            <button className={s.cardTravelButton} onClick={() => showTravels(origin)}>Ver todos</button>
+            {
+               showTravels && <button className={s.cardTravelButton} onClick={() => showTravels(origin)}>Ver todos</button>
+            }
 
         </div>
     )
