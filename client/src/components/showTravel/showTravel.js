@@ -8,11 +8,16 @@ import CardTravel from '../Vuelos/cardTravel/cardTravel';
 import FilterBar from './FilterBar/FilterBar';
 
 const ShowTravel = (props) =>{
+    const [request, setRequest] = useState({
+        origin: props.origin,
+        date: props.date,
+        price: 1000
+    })
     const { data, loading } = useQuery(SEARCH_TRAVEL,{
         variables : {
-            origin: props.origin, 
-            date: props.date, 
-            price: 1000
+            origin: request.origin, 
+            date: request.date, 
+            price: request.price
         }
     });
     const [state, setState] = useState({
@@ -35,14 +40,21 @@ const ShowTravel = (props) =>{
         }
     },[data,loading]) 
 
+    const newRequest = ({price, date, origin}) =>{
 
+        setRequest({
+            price : parseFloat(price),
+            date: date,
+            origin: origin
+        })
+    }
     const handleSelect = (filter) => {
-        console.log(filter)
         orderBy(filter)   
     }
+
     const orderBy = (filter) => {
         console.log(filter)
-        if(filter.name === 'price'){
+        if(filter === 'price'){
             let result = [...data.searchTravel]
             result = result.sort(function(a, b){
                 if(a.price > b.price){
@@ -60,7 +72,7 @@ const ShowTravel = (props) =>{
             console.log(data.searchTravel)
         }
 
-        if(filter.name === 'none'){
+        if(filter === ''){
             setState({
                 ...state,
                 travels: data.searchTravel
@@ -70,16 +82,16 @@ const ShowTravel = (props) =>{
     return(
         <div>
             <div >
-                <CardOrigen origen={props.origin}/>
-                <FormTravel origin={props.origin} date={props.date}/>
-                <FilterBar handleSelect={handleSelect}/>
+                <CardOrigen origen={request.origin}/>
+                <FormTravel origin={request.origin} date={request.date} price={request.price} newRequest={newRequest}/>
+                <FilterBar handleSelect={handleSelect} backTo={props.backTo}/>
             </div>
             {
                 data && 
 
                     <CardTravel 
                         travel={state.travels || data.searchTravel} 
-                        origin={props.origin}
+                        origin={request.origin}
                     />
             }
             

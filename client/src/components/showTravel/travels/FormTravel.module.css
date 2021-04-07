@@ -74,3 +74,23 @@
 .container_inputs select:valid {
     border-bottom: 1px solid #3f51b5
 }
+
+.cardTravelButton{
+    margin: 20px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    border: none;
+    font-size: 20px;
+    width: 50%;
+    background: #ffb037;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+.cardTravelButton:hover{
+    background: #ffe268;
+    width: 90%;
+}

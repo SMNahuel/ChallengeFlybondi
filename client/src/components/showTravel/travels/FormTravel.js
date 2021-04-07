@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './FormTravel.module.css';
+import { useQuery } from '@apollo/client';
+import { SEARCH_ORIGIN } from "../../../GraphQL/Queries";
+
 const FormTravel = (props) =>{
+    const { data } = useQuery(SEARCH_ORIGIN);
+    
     const [input, setInput] = useState({
-        price: 800,
+        price: props.price,
         date: props.date,
         origin: props.origin 
     })
+    useEffect(() =>{
+        if(data){
+            console.log(data)
+        }
+    },[data])
     const onChange = (e) =>{
         setInput({
             ...input,
             [e.target.name]: e.target.value
+        })
+    }
+    const handleChange = (e) =>{
+        setInput({
+            ...input,
+            origin: e.target.value
         })
     }
     return(
@@ -18,16 +34,18 @@ const FormTravel = (props) =>{
 
             <form>
                 <div className={s.container_inputs}>
-                    <input 
-                        type="text" 
-                        name="origin" 
-                        pattern="[A-Za-z0-9 ]{3,250}"
-                        onChange={onChange}
-                        value={input.origin}
-                        autoComplete="off"
-                        placeholder="Ingrese su origen"
-                        title="Solo letras"
-                    />
+                    <select value={input.origin} onChange={handleChange}>
+                        {
+                            data.searchOrigin.map(origin => 
+                                <option key={origin} value={origin}>
+                                    {origin=== 'BRC' && 'Bariloche (BRC)'}
+                                    {origin=== 'MDZ' && 'Mendoza (MDZ)'}
+                                    {origin=== 'COR' && 'Cordoba (COR)'}
+                                    {origin=== 'EPA' && 'Buenos Aires (EPA)'}
+                                </option>
+                            )
+                        }
+                    </select>
                     <label>Aeropuerto</label>
                 </div>
                 <div className={s.container_inputs}>
@@ -61,8 +79,9 @@ const FormTravel = (props) =>{
                         required   
                     />
                     <label> Rango de precios {input.price} </label>
-                </div>                
+                </div>           
             </form>
+                <button className={s.cardTravelButton} onClick={() => props.newRequest(input)}>Enviar</button>     
         </div>
     )
 }

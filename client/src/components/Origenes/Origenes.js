@@ -26,6 +26,9 @@ const Origenes = () => {
         setShowAll(true)
         setOrigin(abc)
     }
+    const backTo = () =>{
+        setShowAll(false)
+    }
     return(
         <div className={s.contenedor}>
 
@@ -50,7 +53,7 @@ const Origenes = () => {
             </div>
            } 
             {
-                showAll && <ShowTravel origin={origin} date={date}/>
+                showAll && <ShowTravel origin={origin} date={date} backTo={backTo}/>
             }
         </div>
     )
