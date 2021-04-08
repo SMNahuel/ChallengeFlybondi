@@ -4,7 +4,6 @@ const gql = require('graphql-tag');
 module.exports ={ 
     schema : buildASTSchema(gql`
     type Travel {
-        id: ID
         destination: String
         origin: String
         availability : Int
