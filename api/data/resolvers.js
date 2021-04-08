@@ -28,5 +28,19 @@ module.exports = {
             }
             return origin
         },
+        searchReturn: ({origin, destination, date}) =>{
+            console.log(destination, origin, date)
+            const travelsOrigin = []
+            for(var i = 0; i< travels.length; i++){
+                if(travels[i].origin === destination){
+                    if(travels[i].data >= date){
+                        if(travels[i].destination === origin){
+                            travelsOrigin.push(travels[i])
+                        }
+                    }
+                }
+            }
+            return travelsOrigin;
+        }
     }
 }

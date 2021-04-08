@@ -13,6 +13,7 @@ module.exports ={
     type Query {
         searchTravel(origin: String!, date: String!, price: Float!): [Travel]
         searchOrigin: [String]
+        searchReturn(origin: String!, date: String!, destination: String!): [Travel]
     },
 `)
 }
