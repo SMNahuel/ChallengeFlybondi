@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { SEARCH_TRAVEL } from "../../GraphQL/Queries";
 import { useQuery } from '@apollo/client';
 import s from './showTravel.module.css';
-import CardOrigen from '../Origenes/cardOrigen/cardOrigen';
-import FormTravel from './travels/FormTravel';
-import CardTravel from '../Vuelos/cardTravel/cardTravel';
+import CardOrigen from '../Origins/cardOrigen/cardOrigen';
+import FormTravel from './FormTravel/FormTravel';
+import CardTravel from '../Travels/cardTravel/cardTravel';
 import FilterBar from './FilterBar/FilterBar';
 
 const ShowTravel = (props) =>{

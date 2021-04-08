@@ -3,10 +3,10 @@ import s from './style.module.css';
 import { useQuery } from '@apollo/client';
 import { SEARCH_ORIGIN } from "../../GraphQL/Queries";
 import CardOrigen from './cardOrigen/cardOrigen';
-import Vuelos from '../Vuelos/Vuelos';
+import Travels from '../Travels/Travel';
 import ShowTravel from '../showTravel/showTravel';
 
-const Origenes = () => {
+const Origins = () => {
     const { error, loading, data } = useQuery(SEARCH_ORIGIN);
     const [showAll, setShowAll] = useState(false)
     const [origin, setOrigin] = useState('')
@@ -42,7 +42,7 @@ const Origenes = () => {
                     data && data.searchOrigin.map(origen => (
                         <div key={origen}>
                             <CardOrigen key={origen} origen={origen}/>
-                            <Vuelos origen={origen} showTravels={changeToAll} date={date}/>
+                            <Travels origen={origen} showTravels={changeToAll} date={date}/>
                         </div>
                         
                     ))
@@ -59,4 +59,4 @@ const Origenes = () => {
     )
 }
 
-export default Origenes;
+export default Origins;

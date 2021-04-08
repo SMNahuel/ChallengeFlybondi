@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { SEARCH_TRAVEL } from "../../GraphQL/Queries";
 import CardTravel from './cardTravel/cardTravel';
 
-const Vuelos = (props) => {
+const Travels = (props) => {
     const [state, setState] = useState('')
     const { error, data } = useQuery(SEARCH_TRAVEL,{
         variables : {
@@ -47,4 +47,4 @@ const Vuelos = (props) => {
     )
 }
 
-export default Vuelos;
+export default Travels;
