@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 5px solid #2f5d62;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px;
+    padding: 20px;
+}

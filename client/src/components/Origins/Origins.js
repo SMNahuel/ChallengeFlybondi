@@ -5,10 +5,25 @@ import { SEARCH_ORIGIN } from "../../GraphQL/Queries";
 import CardOrigen from './cardOrigen/cardOrigen';
 import Travels from '../Travels/Travel';
 import ShowTravel from '../showTravel/showTravel';
+import ReservTravel from '../Travels/reservTravel/ReservTravel';
 
 const Origins = () => {
     const { error, loading, data } = useQuery(SEARCH_ORIGIN);
     const [showAll, setShowAll] = useState(false)
+    const [showReturn, setShowReturn] = useState(false)
+    const [travelGo, setTravelGo] = useState({
+        origin: '',
+        destination: '',
+        price: '',
+        date: ''
+    })
+    const [travelBack, setTravelBack] = useState({
+        originGo: '',
+        destinationBack: '',
+        price: '',
+        date: ''
+    })
+    const [showHome, setHome] = useState(true)
     const [origin, setOrigin] = useState('')
     var date = new Date()
     let day = date.getDate()
@@ -22,18 +37,34 @@ const Origins = () => {
     }
 
 
-    const changeToAll = (abc) => {
+    const changeToAll = (origin) => {
         setShowAll(true)
-        setOrigin(abc)
+        setHome(false)
+        setOrigin(origin)
     }
     const backTo = () =>{
         setShowAll(false)
+    }
+    const chageToReturn = (travel) => {
+        console.log(travel)
+        setShowReturn(true)
+        setHome(false)
+        setTravelGo({
+            origin: travel.origin,
+            destination : travel.destination,
+            price: travel.price,
+            date: travel.data
+        })
+        if(showAll){
+            setShowAll(false)
+        }
+        
     }
     return(
         <div className={s.contenedor}>
 
            {
-            !showAll && 
+            showHome && 
             <div>
                 {
                     loading && <p>Cargando</p>
@@ -42,7 +73,7 @@ const Origins = () => {
                     data && data.searchOrigin.map(origen => (
                         <div key={origen}>
                             <CardOrigen key={origen} origen={origen}/>
-                            <Travels origen={origen} showTravels={changeToAll} date={date}/>
+                            <Travels origen={origen} showTravels={changeToAll} chageToReturn={chageToReturn} date={date}/>
                         </div>
                         
                     ))
@@ -52,9 +83,12 @@ const Origins = () => {
                 }
             </div>
            } 
-            {
-                showAll && <ShowTravel origin={origin} date={date} backTo={backTo}/>
-            }
+           {
+                showAll && <ShowTravel origin={origin} date={date} backTo={backTo} chageToReturn={chageToReturn}/>
+           }
+           {
+               showReturn && <ReservTravel travelGo={travelGo} />
+           }
         </div>
     )
 }

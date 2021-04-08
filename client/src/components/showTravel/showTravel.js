@@ -92,6 +92,7 @@ const ShowTravel = (props) =>{
                     <CardTravel 
                         travel={state.travels || data.searchTravel} 
                         origin={request.origin}
+                        chageToReturn={props.chageToReturn}
                     />
             }
             

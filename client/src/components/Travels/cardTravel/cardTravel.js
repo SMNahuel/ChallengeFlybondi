@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './cardTravel.module.css';
 
-const CardTravel = ({travel, showTravels, origin}) => {
-
+const CardTravel = ({travel, showTravels, origin, chageToReturn}) => {
+    console.log(travel)
     return(
         <div className={s.contenedor}>
             <div className={s.cardTravelRow}>
@@ -24,7 +24,7 @@ const CardTravel = ({travel, showTravels, origin}) => {
                             <div className={s.cardTravelCell}>{travel.data}</div>
                             <div className={s.cardTravelCell}>{travel.availability}</div>
                             <div className={s.cardTravelCell}>${travel.price}</div>
-                            <button className={s.cardTravelButton}>Reservar</button>
+                            <button className={s.cardTravelButton} onClick={() => chageToReturn(travel)}>Reservar</button>
                         </div> 
                     </div>
                 ))

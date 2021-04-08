@@ -31,3 +31,17 @@ export const SEARCH_TRAVEL= gql`
       }
     }
 `;
+
+
+export const SEARCH_RETURNS= gql`
+  query 
+  searchReturn($origin: String!, $date: String!, $destination: String!){  
+    searchReturn(origin: $origin, date: $date, destination: $destination){
+        origin
+        availability
+        destination
+        price
+        data
+      }
+    }
+`;

@@ -39,6 +39,7 @@ const Travels = (props) => {
                 state && <CardTravel 
                     travel={state.slice(0, 5)} 
                     showTravels={props.showTravels}
+                    chageToReturn={props.chageToReturn}
                     origin={props.origen}
                 />
             }
