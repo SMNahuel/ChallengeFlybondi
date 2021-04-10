@@ -6,65 +6,112 @@ import CardOrigen from './cardOrigen/cardOrigen';
 import Travels from '../Travels/Travel';
 import ShowTravel from '../showTravel/showTravel';
 import ReservTravel from '../Travels/reservTravel/ReservTravel';
+import CompleteTravel from '../Travels/completeTravel/completeTravel';
 
 const Origins = () => {
     const { error, loading, data } = useQuery(SEARCH_ORIGIN);
-    const [showAll, setShowAll] = useState(false)
-    const [showReturn, setShowReturn] = useState(false)
+    const [show, setShow] = useState({
+        showAll: false,
+        showReturn: false,
+        showHome: true,
+    })
+
+    
+    const [origin, setOrigin] = useState('')
     const [travelGo, setTravelGo] = useState({
         origin: '',
         destination: '',
         price: '',
         date: ''
     })
-    const [travelBack, setTravelBack] = useState({
-        originGo: '',
-        destinationBack: '',
-        price: '',
-        date: ''
+    const [infoTravel, setInfoTravel] = useState({
+        travelGo: null,
+        travelBack: null
     })
-    const [showHome, setHome] = useState(true)
-    const [origin, setOrigin] = useState('')
     var date = new Date()
     let day = date.getDate()
     let month = date.getMonth() + 1
     let year = date.getFullYear()
     
-    if(month < 10 && day < 10){
-      date = `${year}-0${month}-0${day}`
-    }else{
-        date = `${year}-${month}-${day}`
+    if(month < 10){
+      month = `0${month}`
     }
+    if(day < 10){
+        day = `0${day}`
+    }
+    date = `${year}-${month}-${day}`
 
 
     const changeToAll = (origin) => {
-        setShowAll(true)
-        setHome(false)
+        setShow({
+            ...show,
+            showAll: true,
+            showHome: false
+        })
+
         setOrigin(origin)
     }
     const backTo = () =>{
-        setShowAll(false)
+        if(show.showReturn === true){
+            infoTravel.travelGo = null
+        }
+        setShow({
+            ...show,
+            showAll: false,
+            showHome: true,
+            showReturn : false
+        })
+
     }
     const chageToReturn = (travel) => {
-        console.log(travel)
-        setShowReturn(true)
-        setHome(false)
+        setShow({
+            ...show,
+            showReturn: true,
+            showHome: false
+        })
         setTravelGo({
             origin: travel.origin,
             destination : travel.destination,
             price: travel.price,
             date: travel.data
         })
-        if(showAll){
-            setShowAll(false)
+
+        setInfoTravel({
+            ...infoTravel,
+            travelGo: travel
+        })
+
+        if(show.showAll){
+
+            setShow({
+                ...show,
+                showAll:false
+            })
         }
-        
+    }
+    const completeTravel = (travel) =>{
+        if(show.showAll){
+
+            setShow({
+                ...show,
+                showAll: false,
+                showReturn: false
+            })
+        }
+        setShow({
+            ...show,
+            showReturn: false
+        })
+        setInfoTravel({
+            ...infoTravel,
+            travelBack: travel
+        })
     }
     return(
         <div className={s.contenedor}>
 
            {
-            showHome && 
+            show.showHome && 
             <div>
                 {
                     loading && <p>Cargando</p>
@@ -84,10 +131,13 @@ const Origins = () => {
             </div>
            } 
            {
-                showAll && <ShowTravel origin={origin} date={date} backTo={backTo} chageToReturn={chageToReturn}/>
+                show.showAll && <ShowTravel origin={origin} date={date} backTo={backTo} chageToReturn={chageToReturn}/>
            }
            {
-               showReturn && <ReservTravel travelGo={travelGo} />
+               show.showReturn && <ReservTravel travelGo={travelGo} completeTravel={completeTravel} backTo={backTo}/>
+           }
+           {
+               (infoTravel.travelGo && infoTravel.travelBack ) && <CompleteTravel travelGo={infoTravel.travelGo} travelBack={infoTravel.travelBack} />
            }
         </div>
     )

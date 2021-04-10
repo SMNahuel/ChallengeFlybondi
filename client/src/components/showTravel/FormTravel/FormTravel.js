@@ -30,7 +30,7 @@ const FormTravel = (props) =>{
     }
     return(
         <div className={s.container}>
-            <h4>Datos de salida del vuelo</h4>
+            <h4>Modificar busqueda</h4>
 
             <form>
                 <div className={s.container_inputs}>

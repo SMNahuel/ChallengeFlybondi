@@ -53,7 +53,6 @@ const ShowTravel = (props) =>{
     }
 
     const orderBy = (filter) => {
-        console.log(filter)
         if(filter === 'price'){
             let result = [...data.searchTravel]
             result = result.sort(function(a, b){
@@ -69,7 +68,6 @@ const ShowTravel = (props) =>{
                 ...state, 
                 travels: result
             })
-            console.log(data.searchTravel)
         }
 
         if(filter === ''){
@@ -88,7 +86,6 @@ const ShowTravel = (props) =>{
             </div>
             {
                 data && 
-
                     <CardTravel 
                         travel={state.travels || data.searchTravel} 
                         origin={request.origin}

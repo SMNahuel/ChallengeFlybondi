@@ -1,0 +1,17 @@
+.container{
+    border: 5px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+
+.infoTravelGo{
+    border: 5px solid black;
+    margin: 20px;
+    padding: 20px;
+}
+
+.infoTravelBack{
+    border: 5px solid blue;
+    margin: 20px;
+    padding: 20px;
+}
