@@ -15,3 +15,17 @@
     margin: 20px;
     padding: 20px;
 }
+.cardTravelButton{
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    border: none;
+    font-size: 20px;
+    width: 50%;
+    background: #ffb037;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}

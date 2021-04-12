@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { SEARCH_RETURNS } from "../../../GraphQL/Queries";
 import CardTravel from '../cardTravel/cardTravel';
 import s from './ReservTravel.module.css'
-import FormTravel from '../../showTravel/FormTravel/FormTravel';
+//import FormTravel from '../../showTravel/FormTravel/FormTravel';
 import FilterBar from '../../showTravel/FilterBar/FilterBar';
 
 const ReservTravel = ({travelGo, completeTravel, backTo}) =>{
@@ -24,6 +24,7 @@ const ReservTravel = ({travelGo, completeTravel, backTo}) =>{
     });
 
     useEffect(() => {
+        window.scroll(0, 0)
         if(data){
             setState(data.searchReturn)
         }
@@ -40,7 +41,7 @@ const ReservTravel = ({travelGo, completeTravel, backTo}) =>{
 
     const orderBy = (filter) => {
         if(filter === 'price'){
-            let result = [...data.searchTravel]
+            let result = [...data.searchReturn]
             result = result.sort(function(a, b){
                 if(a.price > b.price){
                     return 1
@@ -50,22 +51,15 @@ const ReservTravel = ({travelGo, completeTravel, backTo}) =>{
                 }
                 return 0
             })
-            setState({
-                ...state, 
-                travels: result
-            })
+            setState(result)
         }
         if(filter === ''){
-            setState({
-                ...state,
-                travels: data.searchTravel
-            })
+            setState(data.searchReturn)
         }
     }
     return(
         <div>
-                <FormTravel />
-                <FilterBar handleSelect={handleSelect} backTo={backTo}/>
+                {/* <FormTravel /> */}
             <div className={s.container}>
 
                 <h2>Los datos de la salida del vuelvo son estas </h2>
@@ -91,9 +85,11 @@ const ReservTravel = ({travelGo, completeTravel, backTo}) =>{
                     {travelGo.destination === 'EPA' && 'Buenos Aires '}
                     ({travelGo.destination})
                 </p>
-                
+                <button className={s.cardTravelButton} onClick={() => completeTravel()}>Solo viaje de ida</button>
             </div>
             <h2>Vuelos para volver</h2>
+            <FilterBar handleSelect={handleSelect} backTo={backTo}/>
+
             {
                 data && <CardTravel travel={state} completeTravel={completeTravel}/>
             }

@@ -8,12 +8,14 @@ import ShowTravel from '../showTravel/showTravel';
 import ReservTravel from '../Travels/reservTravel/ReservTravel';
 import CompleteTravel from '../Travels/completeTravel/completeTravel';
 
+
 const Origins = () => {
     const { error, loading, data } = useQuery(SEARCH_ORIGIN);
     const [show, setShow] = useState({
         showAll: false,
         showReturn: false,
         showHome: true,
+        showComplete: false
     })
 
     
@@ -61,7 +63,6 @@ const Origins = () => {
             showHome: true,
             showReturn : false
         })
-
     }
     const chageToReturn = (travel) => {
         setShow({
@@ -75,41 +76,42 @@ const Origins = () => {
             price: travel.price,
             date: travel.data
         })
-
         setInfoTravel({
             ...infoTravel,
             travelGo: travel
         })
 
         if(show.showAll){
-
             setShow({
                 ...show,
-                showAll:false
+                showAll:false,
+                showReturn: true,
             })
         }
     }
     const completeTravel = (travel) =>{
         if(show.showAll){
-
             setShow({
                 ...show,
                 showAll: false,
-                showReturn: false
+                showReturn: false,
+                showComplete: true
             })
         }
         setShow({
             ...show,
-            showReturn: false
+            showReturn: false,
+            showComplete: true
         })
         setInfoTravel({
             ...infoTravel,
-            travelBack: travel
+            travelBack: travel ? travel : ''
         })
     }
     return(
-        <div className={s.contenedor}>
 
+        <div className={s.contenedor}>
+        
            {
             show.showHome && 
             <div>
@@ -137,7 +139,7 @@ const Origins = () => {
                show.showReturn && <ReservTravel travelGo={travelGo} completeTravel={completeTravel} backTo={backTo}/>
            }
            {
-               (infoTravel.travelGo && infoTravel.travelBack ) && <CompleteTravel travelGo={infoTravel.travelGo} travelBack={infoTravel.travelBack} />
+               show.showComplete && <CompleteTravel travelGo={infoTravel.travelGo} travelBack={infoTravel.travelBack} />
            }
         </div>
     )

@@ -26,6 +26,7 @@ const ShowTravel = (props) =>{
         date: false
     })
     useEffect(()=>{
+        window.scroll(0, 0)
         if(data){
             console.log('Recibimos los datos')
         }
